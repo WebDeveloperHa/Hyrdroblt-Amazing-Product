@@ -1,0 +1,1229 @@
+/* --- Global Styles & Variables (Keep these) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #6c757d; /* Grey */
+    --accent-color: #28a745; /* Green for CTA */
+    --dark-bg: #222;
+    --light-text: #f8f9fa;
+    --dark-text: #343a40;
+    --section-bg-light: #f8f9fa;
+    --section-bg-dark: #343a40;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-text); /* Default text color */
+    background-color: #000; /* Dark background for the theme */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem; /* Responsive padding */
+}
+
+/* Typography & Buttons */
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    color: var(--light-text);
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.75rem; }
+p { font-size: 1.1rem; margin-bottom: 1rem; }
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+.cta-button, .learn-more-button, .price-button, .animate-button, .join-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--light-text);
+    padding: 0.8em 1.8em;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.cta-button:hover, .learn-more-button:hover, .price-button:hover, .animate-button:hover, .join-button:hover {
+    background-color: #218838; /* Slightly darker green */
+    transform: translateY(-3px);
+}
+
+/* --- Section Styling --- */
+section {
+    padding: 6rem 0;
+    text-align: center;
+    background-color: var(--dark-bg); /* Default dark background for sections */
+    color: var(--light-text);
+    position: relative;
+    z-index: 1;
+}
+
+/* Specific section titles and their underlines */
+.section-title {
+    margin-bottom: 3rem;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 1rem;
+    color: var(--light-text);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--light-text);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--light-text);
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links ul li {
+    margin-left: 2rem;
+}
+
+.nav-links ul li a {
+    color: var(--light-text);
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+}
+
+.nav-links ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+.nav-links ul li a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none; /* Hidden on desktop */
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--light-text);
+}
+
+/* --- Initial Hero Section (Main Landing Hero) --- */
+.hero-section:first-of-type { /* Target the first hero section specifically */
+    min-height: 100vh; /* Use min-height to ensure it takes full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://files.ekmcdn.com/allwallpapers/images/photo-wallpaper-lightning-and-thunder-30109-p.jpg') no-repeat center center / cover;
+}
+
+.hero-section .hero-heading {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    animation: fadeInDown 1s ease-out;
+    color: var(--light-text);
+}
+
+.hero-section .hero-subheading {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    margin-bottom: 2.5rem;
+    animation: fadeIn 1.5s ease-out 0.5s forwards;
+    opacity: 0;
+    color: var(--light-text);
+}
+
+.hero-section .cta-button {
+    animation: fadeInUp 1s ease-out 1s forwards;
+    opacity: 0;
+}
+
+/* Hero Animations (Keep these) */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- HYDROBLT Product Animation Section (New Hero Section) --- */
+/* This section now uses the .hero-section class but will have distinct styling */
+.hero-section:nth-of-type(2) { /* Targeting the second hero section */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://image.freepik.com/free-vector/realistic-thunder-background_23-2148831215.jpg') no-repeat center center / cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh; /* Adjust height for product focus */
+    padding: 4rem 0; /* Adjust padding */
+}
+
+.product-animation-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 600px; /* Constrain width */
+    margin-bottom: 3rem; /* Space below animation area */
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.4); /* Blueish glow for electric feel */
+    border: 2px solid var(--primary-color);
+}
+
+.product-animation-area .product-image {
+    width: 60%; /* Adjust size of the product image */
+    height: auto;
+    max-width: 300px;
+    margin-bottom: 1.5rem; /* Space below image */
+    transition: transform 0.5s ease;
+}
+
+.product-animation-area .lightning-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: lightningFlashEffect 2s infinite ease-out; /* Continuous lightning effect */
+}
+
+.product-animation-area .bolt-icon {
+    font-size: 6rem; /* Size of the bolt icon */
+    color: #ffd700; /* Golden yellow for lightning */
+    text-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700;
+}
+
+@keyframes lightningFlashEffect {
+    0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    10% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+    20% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+    /* Add more steps for a more random flash */
+    30% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.05); }
+    40% { opacity: 0; }
+    /* Longer period of no flash */
+    70% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.0); }
+    80% { opacity: 0; }
+}
+
+
+.flashing-text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    width: 100%; /* Take full width of parent */
+    pointer-events: none;
+}
+
+.flashing-word {
+    opacity: 0;
+    animation: flashWord 8s infinite forwards; /* 4 words, 2s per word, 8s total cycle */
+    text-align: center;
+    padding: 0.2rem 0;
+}
+
+.flashing-word:nth-child(1) { animation-delay: 0s; }
+.flashing-word:nth-child(2) { animation-delay: 2s; }
+.flashing-word:nth-child(3) { animation-delay: 4s; }
+.flashing-word:nth-child(4) { animation-delay: 6s; }
+
+@keyframes flashWord {
+    0%, 100% { opacity: 0; transform: scale(0.9); }
+    5% { opacity: 1; transform: scale(1.1); } /* Appear and slightly scale up */
+    15% { opacity: 1; transform: scale(1); } /* Hold */
+    20% { opacity: 0; transform: scale(0.9); } /* Fade out */
+}
+
+.hydroblt-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--light-text);
+    margin-top: 1.5rem; /* Space from flashing text container */
+    text-shadow: 0 0 15px rgba(0, 123, 255, 0.7), 0 0 30px rgba(0, 123, 255, 0.5); /* Blue glow */
+}
+
+.bolt-letter {
+    color: #ffd700; /* Golden yellow for the 'B' */
+    text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+}
+
+/* --- Waiting List Section (within HYDROBLT section) --- */
+.hero-section:nth-of-type(2) .waiting-list-section {
+    background-color: transparent; /* No background as it's within another section */
+    padding: 0; /* Remove padding as it's part of a larger section */
+    margin-top: 3rem;
+}
+
+.hero-section:nth-of-type(2) .waiting-list-section h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+}
+
+.hero-section:nth-of-type(2) .waiting-list-section p {
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+    color: #eee;
+}
+
+.hero-section:nth-of-type(2) .waiting-list-section .form-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.hero-section:nth-of-type(2) .waiting-list-section input[type="email"] {
+    flex-grow: 1;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    font-size: 1.1rem;
+    min-width: 280px;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: var(--dark-text);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section:nth-of-type(2) .waiting-list-section input[type="email"]::placeholder {
+    color: #777;
+}
+
+.hero-section:nth-of-type(2) .waiting-list-section .join-button {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-section:nth-of-type(2) .waiting-list-section .join-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+.hero-section:nth-of-type(2) .waiting-list-section .form-message {
+    margin-top: 1.5rem;
+    font-weight: bold;
+    color: var(--light-text);
+    min-height: 1.5rem; /* Ensure space even when empty */
+}
+
+
+/* --- Card Section (for "cocacola" - assuming this is a standalone product highlight) --- */
+#animation {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://image.freepik.com/free-photo/red-light-beams-smoke-dark_1308-54203.jpg') no-repeat center center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 4rem 0;
+}
+
+.card {
+    position: relative;
+    width: 350px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.5s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+}
+
+.card .circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--clr); /* Uses inline style for color */
+    clip-path: circle(120px at center 100px);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.card .circle .logo {
+    position: absolute;
+    top: 20px;
+    max-width: 100px;
+    filter: invert(1);
+    opacity: 0.8;
+}
+
+.card .content {
+    position: relative;
+    text-align: center;
+    margin-top: 160px; /* Space for the circle/logo */
+    padding: 20px;
+    color: var(--light-text);
+    z-index: 1; /* Ensure content is above circle if needed */
+}
+
+.card .content .h {
+    font-size: 1.8rem;
+    color: var(--light-text);
+    margin-bottom: 10px;
+}
+
+.card .content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.card .content a {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #fff;
+    color: var(--dark-text);
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.card .content a:hover {
+    background: var(--primary-color);
+    color: var(--light-text);
+}
+
+.card .product_img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8); /* Adjust initial size */
+    max-width: 80%;
+    transition: transform 0.5s ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+}
+
+.card:hover .product_img {
+    transform: translate(-50%, -50%) scale(0.9); /* Slightly larger on hover */
+}
+
+/* --- Product Showcase Section (original from previous iteration) --- */
+.product-showcase-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://image.freepik.com/free-vector/realistic-thunder-background_23-2148831215.jpg') no-repeat center center / cover;
+}
+
+.product-animation-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+    border: 3px solid var(--primary-color);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.product-showcase-section .product-image { /* Specificity for this section's image */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.product-showcase-section .product-image.active {
+    transform: scale(1.05);
+}
+
+.verbiage-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--light-text);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: bold;
+    text-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.verbiage-overlay.visible {
+    opacity: 1;
+}
+
+.flashing-text {
+    display: inline-block;
+    color: var(--primary-color);
+    transition: color 0.05s linear;
+}
+
+.lightning-bolt {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.05s ease-out;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    z-index: 5;
+    box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.8);
+}
+
+.lightning-bolt.flash {
+    opacity: 1;
+    animation: lightningFlash 0.1s forwards;
+}
+
+@keyframes lightningFlash {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.animate-button {
+    margin-top: 2rem;
+}
+
+/* --- Products Section (Grid of Product Cards) --- */
+.products-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://image.freepik.com/free-photo/dramatic-sky-with-lightning-strikes-over-city_181624-22807.jpg') no-repeat center center / cover;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.product-card {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--light-text);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space */
+    align-items: center; /* Center content horizontally */
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.product-card .fa-solid.fa-arrow-down-a-z { /* Style for the new icon in Product Alpha */
+    font-size: 4rem; /* Larger icon size */
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+
+.product-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.product-card p {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Allow description to take up available space */
+}
+
+.product-card .learn-more-button {
+    background-color: var(--primary-color);
+    align-self: center; /* Ensure button is centered */
+}
+.product-card .learn-more-button:hover {
+    background-color: #0056b3;
+}
+
+/* --- About Section --- */
+.about-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://image.freepik.com/free-vector/abstract-dark-blue-lightning-strike-background_1035-19758.jpg') no-repeat center center / cover;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-image {
+    max-width: 100%;
+    height: auto;
+    flex: 1;
+    min-width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    object-fit: cover; /* Ensure image covers space without distortion */
+}
+
+.about-content p {
+    flex: 2;
+    min-width: 300px;
+    color: var(--light-text);
+}
+
+/* --- Service Section --- */
+.services-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://image.freepik.com/free-photo/thunderstorm-clouds-dramatic-sky_1160-157.jpg') no-repeat center center / cover;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.service-card {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    color: var(--light-text);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.service-card .icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: var(--light-text);
+    margin-bottom: 0.8rem;
+}
+
+.service-card p {
+    font-size: 0.95rem;
+    color: #ccc;
+    flex-grow: 1;
+}
+
+/* --- Price Table --- */
+.pricing-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://image.freepik.com/free-vector/dark-blue-night-sky-with-lightning_1017-33720.jpg') no-repeat center center / cover;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    align-items: stretch;
+}
+
+.price-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--dark-text);
+}
+
+.price-card.featured {
+    border: 3px solid var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.price-card.featured .price-button {
+    background-color: var(--primary-color);
+}
+.price-card.featured .price-button:hover {
+    background-color: #0056b3;
+}
+
+
+.price-card h3 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.price-card .price {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--dark-text);
+    margin-bottom: 1.5rem;
+}
+
+.price-card .price sup {
+    font-size: 1.5rem;
+    vertical-align: super;
+}
+
+.price-card .price span {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--secondary-color);
+}
+
+.price-card ul {
+    list-style: none;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.price-card ul li {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--dark-text);
+    border-bottom: 1px dashed #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.price-card ul li:last-child {
+    border-bottom: none;
+}
+
+.price-card ul li .fas.fa-check {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+}
+.price-card ul li .fas.fa-times {
+    color: #dc3545;
+    margin-right: 0.5rem;
+}
+
+/* --- Waiting List Section (Standalone Section) --- */
+/* This is the original waiting list section, not the one within the HYDROBLT hero */
+#waiting-list {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://image.freepik.com/free-photo/lightning-strikes-sea-during-storm_1160-170.jpg') no-repeat center center / cover;
+}
+
+.waiting-list-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.waiting-list-form input[type="email"] {
+    flex-grow: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    min-width: 250px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--dark-text);
+}
+
+.waiting-list-form input[type="email"]::placeholder {
+    color: #666;
+}
+
+.waiting-list-form button[type="submit"] {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+    padding: 0.8em 2em;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.waiting-list-form button[type="submit"]:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.form-message {
+    margin-top: 1rem;
+    font-weight: bold;
+    min-height: 1.5rem;
+    color: var(--light-text);
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://files.ekmcdn.com/allwallpapers/images/photo-wallpaper-lightning-and-thunder-30109-p.jpg') no-repeat center center / cover;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.contact-info, .contact-form {
+    flex: 1;
+    min-width: 300px;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    color: var(--light-text);
+}
+
+.contact-info h3, .contact-form h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    color: var(--light-text);
+}
+.contact-info p .fas {
+    margin-right: 0.8rem;
+    color: var(--primary-color);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #555;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--light-text);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #aaa;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Footer Section --- */
+.footer-section {
+    background-color: #111;
+    color: var(--light-text);
+    padding: 3rem 0;
+    text-align: center;
+    z-index: 1;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--light-text);
+    flex-basis: 100%;
+    margin-bottom: 1rem;
+}
+
+.footer-logo span {
+    color: var(--primary-color);
+}
+
+.social-links {
+    flex-basis: 100%;
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--light-text);
+    font-size: 1.5rem;
+    margin: 0 0.8rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.copyright a {
+    color: #bbb;
+    text-decoration: underline;
+}
+
+.copyright a:hover {
+    color: var(--light-text);
+}
+
+/* --- Responsive Design (Media Queries) --- */
+
+@media (max-width: 992px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links ul li {
+        margin: 0.8rem 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hero-section .hero-heading {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+    }
+
+    .hero-section .hero-subheading {
+        font-size: clamp(1rem, 3.5vw, 1.3rem);
+    }
+
+    .about-content, .contact-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .contact-info, .contact-form {
+        width: 100%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-logo, .social-links {
+        text-align: center;
+    }
+
+    .social-links {
+        margin-top: 1rem;
+    }
+
+    /* Adjustments for HYDROBLT section on smaller screens */
+    .product-animation-area {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    .product-animation-area .product-image {
+        width: 70%;
+    }
+
+    .hydroblt-title {
+        font-size: clamp(2.5rem, 10vw, 4.5rem);
+    }
+
+    .flashing-text-container {
+        font-size: clamp(1rem, 4vw, 1.8rem);
+    }
+
+    .hero-section:nth-of-type(2) .waiting-list-section .form-group {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+    }
+    .hero-section:nth-of-type(2) .waiting-list-section input[type="email"],
+    .hero-section:nth-of-type(2) .waiting-list-section .join-button {
+        width: 100%;
+        max-width: 400px; /* Constrain max width for inputs/buttons */
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+
+    section {
+        padding: 4rem 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .product-showcase-section .animate-button {
+        font-size: 0.9rem;
+        padding: 0.6em 1.5em;
+    }
+
+    .verbiage-overlay {
+        font-size: clamp(1.5rem, 8vw, 3rem);
+    }
+
+    .product-grid, .service-grid, .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #waiting-list .waiting-list-form { /* Target specific waiting list form */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #waiting-list .waiting-list-form input,
+    #waiting-list .waiting-list-form button {
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .price-card.featured {
+        transform: scale(1.02);
+    }
+
+    /* Card section adjustments */
+    .card {
+        width: 90%;
+        max-width: 350px;
+        height: auto; /* Allow height to adjust */
+        padding-bottom: 20px; /* Add padding at bottom */
+    }
+    .card .content {
+        margin-top: 120px; /* Reduce top margin for smaller height */
+    }
+    .card .circle {
+        clip-path: circle(100px at center 80px); /* Adjust circle size/position */
+    }
+    .card .circle .logo {
+        top: 10px;
+        max-width: 80px;
+    }
+    .card .product_img {
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+    .card:hover .product_img {
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0 0.8rem;
+    }
+
+    .navbar {
+        padding: 0.8rem 0;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .hamburger {
+        font-size: 1.5rem;
+    }
+
+    .hero-section .hero-heading {
+        font-size: clamp(1.8rem, 10vw, 3rem);
+    }
+
+    .product-card, .service-card, .price-card, .contact-info, .contact-form {
+        padding: 1.2rem;
+    }
+
+    .product-card h3, .service-card h3, .price-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .product-animation-area .product-image {
+        width: 80%;
+    }
+}
